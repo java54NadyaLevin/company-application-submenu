@@ -15,4 +15,5 @@ long MIN_SALES = 500;
 long MAX_SALES = Integer.MAX_VALUE;
 long MIN_ID = 1000;
 long MAX_ID = 9999;
+
 }
