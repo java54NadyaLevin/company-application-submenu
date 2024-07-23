@@ -1,3 +1,4 @@
+
 package telran.employees;
 
 import java.util.*;
@@ -5,17 +6,27 @@ import java.util.stream.Collectors;
 
 import telran.view.InputOutput;
 import telran.view.Item;
+import telran.view.Menu;
+import telran.view.SystemInputOutput;
+
 import static telran.employees.CompanyConfigProperties.*;
 
 public class CompanyApplItems {
 	static Company company;
 	static HashSet<String> departments;
+	
 public static List<Item> getCompanyItems(Company company,
 		HashSet<String> departments) {
 	CompanyApplItems.company = company;
 	CompanyApplItems.departments = departments;
+	Item[] addEmployeeList = {
+			Item.of("add WageEmployee", CompanyApplItems::addEmployee)	,
+			Item.of("add Manager", CompanyApplItems::addEmployee),
+			Item.of("add SalesPerson", CompanyApplItems::addEmployee)
+	};
+	Menu submenu = new Menu("add employee", addEmployeeList);
 	Item[] items = {
-		Item.of("add employee", CompanyApplItems::addEmployee)	,
+		Item.of("add employee", io -> submenu.perform(new SystemInputOutput())),
 		Item.of("display employee data", CompanyApplItems::getEmployee),
 		Item.of("remove employee", CompanyApplItems::removeEmployee),
 		Item.of("display department budget", CompanyApplItems::getDepartmentBudget),
