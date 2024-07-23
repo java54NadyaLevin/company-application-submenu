@@ -21,7 +21,7 @@ public class CompanyApplItems {
 		CompanyApplItems.departments = departments;
 		Item[] addEmployeeMenu = { Item.of("add WageEmployee", CompanyApplItems::addWageEmployee),
 				Item.of("add SalesPerson", CompanyApplItems::addSalesPerson),
-				Item.of("add Manager", CompanyApplItems::addManager), 
+				//Item.of("add Manager", CompanyApplItems::addManager), 
 				Item.ofExit(), 
 				};
 		Menu submenu = new Menu("add employee", addEmployeeMenu);
@@ -34,20 +34,6 @@ public class CompanyApplItems {
 		return new ArrayList<>(List.of(items));
 
 	}
-//static void addEmployee(InputOutput io) {
-//	Employee empl = readEmployee(io);
-//	String type = io.readStringOptions("Enter employee type",
-//			"Wrong Employee Type", new HashSet<String>
-//	(List.of("WageEmployee", "Manager", "SalesPerson")));
-//	Employee result = switch(type) {
-//	case "WageEmployee" -> getWageEmployee(empl, io);
-//	case "Manager" -> getManager(empl, io);
-//	case "SalesPerson" -> getSalesPerson(empl, io);
-//	default -> null;
-//	};
-//	company.addEmployee(result);
-//	io.writeLine("Employee has been added");
-//}
 
 	private static void addSalesPerson(InputOutput io) {
 		Employee empl = readEmployee(io);
@@ -62,13 +48,13 @@ public class CompanyApplItems {
 		return new SalesPerson(wageEmployee.getId(), wageEmployee.getBasicSalary(), wageEmployee.getDepartment(),
 				wageEmployee.getHours(), wageEmployee.getWage(), percents, sales);
 	}
-
-	private static void addManager(InputOutput io) {
-		Employee empl = readEmployee(io);
-		float factor = io.readNumberRange("Enter factor", "Wrong factor value", MIN_FACTOR, MAX_FACTOR).floatValue();
-		addEmployee(io, new Manager(empl.getId(), empl.getBasicSalary(), empl.getDepartment(), factor));
-
-	}
+//
+//	private static void addManager(InputOutput io) {
+//		Employee empl = readEmployee(io);
+//		float factor = io.readNumberRange("Enter factor", "Wrong factor value", MIN_FACTOR, MAX_FACTOR).floatValue();
+//		addEmployee(io, new Manager(empl.getId(), empl.getBasicSalary(), empl.getDepartment(), factor));
+//
+//	}
 
 	private static void addWageEmployee(InputOutput io) {
 		Employee empl = readEmployee(io);
