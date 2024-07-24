@@ -21,7 +21,7 @@ public class CompanyApplItems {
 		CompanyApplItems.departments = departments;
 		Item[] addEmployeeMenu = { Item.of("add WageEmployee", CompanyApplItems::addWageEmployee),
 				Item.of("add SalesPerson", CompanyApplItems::addSalesPerson),
-				//Item.of("add Manager", CompanyApplItems::addManager), 
+				Item.of("add Manager", CompanyApplItems::addManager), 
 				Item.ofExit(), 
 				};
 		Menu submenu = new Menu("add employee", addEmployeeMenu);
@@ -48,13 +48,13 @@ public class CompanyApplItems {
 		return new SalesPerson(wageEmployee.getId(), wageEmployee.getBasicSalary(), wageEmployee.getDepartment(),
 				wageEmployee.getHours(), wageEmployee.getWage(), percents, sales);
 	}
-//
-//	private static void addManager(InputOutput io) {
-//		Employee empl = readEmployee(io);
-//		float factor = io.readNumberRange("Enter factor", "Wrong factor value", MIN_FACTOR, MAX_FACTOR).floatValue();
-//		addEmployee(io, new Manager(empl.getId(), empl.getBasicSalary(), empl.getDepartment(), factor));
-//
-//	}
+
+	private static void addManager(InputOutput io) {
+		Employee empl = readEmployee(io);
+		float factor = io.readNumberRange("Enter factor", "Wrong factor value", MIN_FACTOR, MAX_FACTOR).floatValue();
+		addEmployee(io, new Manager(empl.getId(), empl.getBasicSalary(), empl.getDepartment(), factor));
+
+	}
 
 	private static void addWageEmployee(InputOutput io) {
 		Employee empl = readEmployee(io);
@@ -62,7 +62,6 @@ public class CompanyApplItems {
 	}
 
 	private static void addEmployee(InputOutput io, Employee empl) {
-		
 			company.addEmployee(empl);
 			io.writeLine("Employee has been added");	
 	}
